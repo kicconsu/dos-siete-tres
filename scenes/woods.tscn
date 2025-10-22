@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://danhu2j53kaqi"]
+
+[ext_resource type="PackedScene" uid="uid://co7ejxoerse8a" path="res://scenes/player.tscn" id="1_v6ssl"]
+
+[node name="Woods" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_v6ssl")]
+SPEED = 400.0

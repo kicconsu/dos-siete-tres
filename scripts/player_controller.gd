@@ -1,0 +1,25 @@
+extends CharacterBody2D
+
+@export_category("Variables de movimiento")
+@export
+var SPEED = 300.0
+
+func _physics_process(_delta: float) -> void:
+	
+	var up_down_dir := Input.get_axis("move_up", "move_down")
+	var left_right_dir := Input.get_axis("move_left", "move_right")
+	
+	if up_down_dir:
+		velocity.y = SPEED*up_down_dir
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	if left_right_dir:
+		velocity.x = SPEED*left_right_dir
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	velocity = velocity.limit_length(SPEED*1.3)
+	
+	move_and_slide()
+	
