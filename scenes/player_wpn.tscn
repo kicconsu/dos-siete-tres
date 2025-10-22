@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3jwxt5nouwdn"]
+
+[ext_resource type="Script" uid="uid://c8dlhe1jtkcii" path="res://scripts/wpn_controller.gd" id="1_ega3w"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qhqgy"]
+
+[node name="Arm" type="Node2D"]
+script = ExtResource("1_ega3w")
+BULLET_LIFE = 0.5
+
+[node name="WpnSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 79)
+scale = Vector2(4, 54)
+texture = SubResource("PlaceholderTexture2D_qhqgy")
+
+[node name="Barrel" type="Node2D" parent="."]
+position = Vector2(0, 105)
