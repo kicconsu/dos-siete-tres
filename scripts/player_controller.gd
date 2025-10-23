@@ -5,7 +5,10 @@ extends CharacterBody2D
 var SPEED = 300.0
 
 func _physics_process(_delta: float) -> void:
-	
+	# Para mover un CharacterBody solo hace falta calcular "velocity"
+	# antes de llamar move_and_slide(). Este cálculo depende de la naturaleza del juego
+	# (plataformero, top-down, shoot-em-up, isométrico...).
+	# Investiga sobre el tipo de juego que quieras hacer!!!! :)
 	var up_down_dir := Input.get_axis("move_up", "move_down")
 	var left_right_dir := Input.get_axis("move_left", "move_right")
 	

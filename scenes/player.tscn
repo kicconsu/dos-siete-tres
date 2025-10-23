@@ -21,4 +21,4 @@ texture = ExtResource("2_g2els")
 
 [node name="Arm" parent="." instance=ExtResource("3_qhqgy")]
 BULLET_SPRITE = "uid://bods45o7vlbx6"
-BULLET_SPEED = 3.0
+BULLET_SCALE = Vector2(0.3, 0.3)

@@ -6,3 +6,8 @@
 
 [node name="Player" parent="." instance=ExtResource("1_v6ssl")]
 SPEED = 400.0
+
+[node name="Arm" parent="Player" index="2"]
+SHOT_RATE = 0.5
+
+[editable path="Player"]

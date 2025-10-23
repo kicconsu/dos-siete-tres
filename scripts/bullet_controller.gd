@@ -41,4 +41,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_life_timer_timeout() -> void:
-	self.free()
+	self.queue_free()
