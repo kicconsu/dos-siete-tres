@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bertyga7ookeu"]
 
 [ext_resource type="Script" uid="uid://dm2iaxru0pj1j" path="res://scripts/bullet_controller.gd" id="1_mkf8s"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h1aey"]
+[ext_resource type="Texture2D" uid="uid://bviypcg6x4owc" path="res://textures/273 design bullet head transparent.png" id="2_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
 size = Vector2(30, 30)
@@ -14,8 +13,9 @@ script = ExtResource("1_mkf8s")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(30, 30)
-texture = SubResource("PlaceholderTexture2D_h1aey")
+rotation = 0.00039331533
+scale = Vector2(0.031, 0.034)
+texture = ExtResource("2_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mkf8s")

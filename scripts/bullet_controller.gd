@@ -32,6 +32,8 @@ func upd8_graphics() -> void:
 		var tex_resource := load(SPRITE)
 		$BulletSprite.texture = tex_resource
 		$BulletSprite.scale = SCALE
+	transform.y = -DIRECTION
+	transform.x = -DIRECTION.orthogonal()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
