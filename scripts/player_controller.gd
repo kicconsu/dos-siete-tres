@@ -4,6 +4,13 @@ extends CharacterBody2D
 @export
 var SPEED = 300.0
 
+func _process(_delta: float) -> void:
+	#Flipear el sprite de armando si el mouse está a la izq.
+	if global_position.x - get_global_mouse_position().x < 0:
+		$CharSprite.flip_h = false
+	else:
+		$CharSprite.flip_h = true
+
 func _physics_process(_delta: float) -> void:
 	# Para mover un CharacterBody solo hace falta calcular "velocity"
 	# antes de llamar move_and_slide(). Este cálculo depende de la naturaleza del juego

@@ -45,10 +45,21 @@ func setup_attributes() -> void:
 	$ShotTimer.wait_time = SHOT_RATE
 
 func _process(_delta: float) -> void:
+	var mouse_pos := get_global_mouse_position()
+	var flipped:bool
+	
 	# Rotar el brazo alrededor del eje del sprite del jugador
-	look_at(get_global_mouse_position())
+	look_at(mouse_pos)
 	# Offset porque godot cosas
 	rotation_degrees -= 90
+	
+	if global_rotation >= 0:
+		$WpnSprite.flip_v = true
+		flipped = true
+	else:
+		$WpnSprite.flip_v = false
+		flipped = false
+		
 	
 	# Disparar: Instanciar escena "Bullet" y configurarla antes de ser añadida al arbol.
 	# Luego esperar a poder volver a disparar. Obvio problema de escalabilidad!
@@ -59,7 +70,10 @@ func _process(_delta: float) -> void:
 			bullet_instance.SPRITE = BULLET_SPRITE
 			bullet_instance.SCALE = BULLET_SCALE
 			bullet_instance.SPEED = BULLET_SPEED
-			var dir_vec:Vector2 = $Barrel.get_global_position().direction_to(get_global_mouse_position())
+			var dir_vec:Vector2 = $Barrel.global_transform.y
+			#el "transform" guarda la información espacial de un nodo.
+			#sucede que la dirección en la que mira el barril localmente es en "y"
+			
 			bullet_instance.DIRECTION = dir_vec
 			bullet_instance.LIFE = BULLET_LIFE
 			bullet_instance.global_position = $Barrel.get_global_position()
@@ -69,12 +83,12 @@ func _process(_delta: float) -> void:
 			# Esto se hace para interrumpir una animación
 			# Transiciones más complejas requieren del uso de un AnimationTree (basicamente magia oscura)
 			$AnimWpn.play("RESET")
-			$AnimWpn.play("shoot")
-			#$AnimWpn.advance(0)
+			if flipped:
+				$AnimWpn.play("shoot_flipped")
+			else:
+				$AnimWpn.play("shoot")
 			can_shoot = false
 			$ShotTimer.start(SHOT_RATE*rate_mod)
-		
-	
 	
 
 #Señal conectada del Timer "ShotTimer"
