@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://durm68msfwsef"]
+
+[ext_resource type="Script" uid="uid://1ueh40rtnadm" path="res://scripts/spawn_controller.gd" id="1_ypujr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6ssl"]
+radius = 2094.0957
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypujr"]
+radius = 3115.2698
+
+[node name="SpawnEnemies" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ypujr")
+
+[node name="TimerSpawn" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v6ssl")
+
+[node name="DespawnEnemies" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnEnemies"]
+shape = SubResource("CircleShape2D_ypujr")
+
+[connection signal="timeout" from="TimerSpawn" to="." method="_on_timer_spawn_timeout"]
+[connection signal="area_exited" from="DespawnEnemies" to="." method="_on_despawn_enemies_area_exited"]

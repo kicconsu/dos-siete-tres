@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://danhu2j53kaqi"]
+[gd_scene load_steps=3 format=3 uid="uid://danhu2j53kaqi"]
 
 [ext_resource type="PackedScene" uid="uid://co7ejxoerse8a" path="res://scenes/player.tscn" id="1_v6ssl"]
+[ext_resource type="PackedScene" uid="uid://durm68msfwsef" path="res://scenes/spawn_handler.tscn" id="2_epv74"]
 
 [node name="Woods" type="Node2D"]
 
@@ -9,5 +10,17 @@
 [node name="Arm" parent="Player" index="0"]
 SHOT_RATE = 0.5
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="SpawnHandler" parent="Player" instance=ExtResource("2_epv74")]
+visible = false
+monitorable = false
+INVERSE_SPAWN_RATE = 0.1
+
+[node name="TimerSpawn" parent="Player/SpawnHandler" index="0"]
+wait_time = 10.0
+
 [editable path="Player"]
 [editable path="Player/Arm"]
+[editable path="Player/SpawnHandler"]

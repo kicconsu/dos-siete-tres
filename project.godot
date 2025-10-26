@@ -14,6 +14,10 @@ config/name="DOS::SIETE::TRES"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://textures/icon.svg"
 
+[autoload]
+
+PlayerData="*res://autoloads/game_data.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -22,6 +26,7 @@ window/size/viewport_height=720
 [file_customization]
 
 folder_colors={
+"res://autoloads/": "red",
 "res://scenes/": "green",
 "res://scripts/": "orange",
 "res://textures/": "purple"

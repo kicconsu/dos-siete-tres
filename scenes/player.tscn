@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://3jwxt5nouwdn" path="res://scenes/player_wpn.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(54, 95)
+size = Vector2(54, 90)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_3vyb7")
 
 [node name="Arm" parent="." instance=ExtResource("3_qhqgy")]
-position = Vector2(0, -5.165)
+position = Vector2(0, -6)
 rotation = -1.5707964
 BULLET_SPEED = 15.0
 
@@ -22,5 +23,5 @@ scale = Vector2(0.066, 0.066)
 texture = ExtResource("2_qhqgy")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_g2els")

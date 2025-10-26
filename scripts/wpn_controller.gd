@@ -12,7 +12,7 @@ var SPRITE
 @export
 var SCALE := Vector2(1.0, 1.0)
 @export
-var BARREL_POS := Vector2(0.0, 105.0)
+var BARREL_POS := Vector2(0.0, 104.0)
 
 @export_category("Propiedades de bala")
 @export_file
@@ -26,23 +26,31 @@ var BULLET_LIFE := 1.0
 @export
 var SHOT_RATE := 1.0
 
-var bullet:PackedScene
+@onready
+var WPN_SPRITE:Sprite2D = $WpnSprite
+@onready
+var BARREL:Node2D = $Barrel
+@onready
+var SHOT_TIMER:Timer = $ShotTimer
+@onready
+var ANIM_WPN:AnimationPlayer = $AnimWpn
+
+var BULLET := preload("res://scenes/bullet.tscn")
 var can_shoot := true
 var rate_mod := 1.0
 
 func _ready() -> void:
-	bullet = preload("res://scenes/bullet.tscn")
 	setup_attributes()
 
 func setup_attributes() -> void:
 	# Reemplazar los placeholders del arma con los datos definidos en los atributos.
 	if SPRITE:
 		var tex_resource := load(SPRITE)
-		$WpnSprite.texture = tex_resource
-		$WpnSprite.scale = SCALE
+		WPN_SPRITE.texture = tex_resource
+		WPN_SPRITE.scale = SCALE
 	
-	$Barrel.position = BARREL_POS
-	$ShotTimer.wait_time = SHOT_RATE
+	BARREL.position = BARREL_POS
+	SHOT_TIMER.wait_time = SHOT_RATE
 
 func _process(_delta: float) -> void:
 	var mouse_pos := get_global_mouse_position()
@@ -54,10 +62,10 @@ func _process(_delta: float) -> void:
 	rotation_degrees -= 90
 	
 	if global_rotation >= 0:
-		$WpnSprite.flip_v = true
+		WPN_SPRITE.flip_v = true
 		flipped = true
 	else:
-		$WpnSprite.flip_v = false
+		WPN_SPRITE.flip_v = false
 		flipped = false
 		
 	
@@ -66,29 +74,29 @@ func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if can_shoot:
 			# "Cada arma sabe qué bala dispara." (es cine)
-			var bullet_instance := bullet.instantiate()
+			var bullet_instance := BULLET.instantiate()
 			bullet_instance.SPRITE = BULLET_SPRITE
 			bullet_instance.SCALE = BULLET_SCALE
 			bullet_instance.SPEED = BULLET_SPEED
-			var dir_vec:Vector2 = $Barrel.global_transform.y
+			var dir_vec:Vector2 = BARREL.global_transform.y
 			#el "transform" guarda la información espacial de un nodo.
 			#sucede que la dirección en la que mira el barril localmente es en "y"
 			
 			bullet_instance.DIRECTION = dir_vec
 			bullet_instance.LIFE = BULLET_LIFE
-			bullet_instance.global_position = $Barrel.get_global_position()
+			bullet_instance.global_position = BARREL.get_global_position()
 			get_tree().root.add_child(bullet_instance)
 			
 			# Manejo de animación: se obliga al animador a resetar antes de disparar.
 			# Esto se hace para interrumpir una animación
 			# Transiciones más complejas requieren del uso de un AnimationTree (basicamente magia oscura)
-			$AnimWpn.play("RESET")
+			ANIM_WPN.play("RESET")
 			if flipped:
-				$AnimWpn.play("shoot_flipped")
+				ANIM_WPN.play("shoot_flipped")
 			else:
-				$AnimWpn.play("shoot")
+				ANIM_WPN.play("shoot")
 			can_shoot = false
-			$ShotTimer.start(SHOT_RATE*rate_mod)
+			SHOT_TIMER.start(SHOT_RATE*rate_mod)
 	
 
 #Señal conectada del Timer "ShotTimer"

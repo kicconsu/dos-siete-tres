@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://v87jiyd8nhui"]
+
+[ext_resource type="Script" uid="uid://c41xpaadmujmc" path="res://scripts/e_runner_cont.gd" id="1_52agx"]
+[ext_resource type="Texture2D" uid="uid://di57lgddtd22k" path="res://textures/bienvenidosalhimalaya.png" id="2_0q11q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tegq"]
+size = Vector2(276, 290)
+
+[sub_resource type="Animation" id="Animation_0q11q"]
+resource_name = "walk"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.5, 0.6333333, 0.96666664),
+"transitions": PackedFloat32Array(7.999992, 3.605001, 2.0705297, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10.09), Vector2(0, -16.76), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y21ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteEnemy:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteEnemy:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5qbmg"]
+resource_name = "look_around"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteEnemy:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.43333334),
+"transitions": PackedFloat32Array(1, 0.23325814, 0.11662917),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(-0.025, 0.1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_a6sfn"]
+resource_name = "die_and_go_to_hell"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteEnemy:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1),
+"transitions": PackedFloat32Array(0.074325405, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.02), Vector2(0.1, 0.02)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteEnemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333334, 0.06666666, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333332, 0.26666668, 0.30348235, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.4666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.63681567, 0.6666667, 0.70348233, 0.73681575, 0.76666665, 0.8000001, 0.8333333, 0.86666673, 0.9, 0.9333334, 0.96666664, 1),
+"transitions": PackedFloat32Array(0.085377574, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.085377574, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603, 0.058314584, 0.058314603),
+"update": 0,
+"values": [Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteEnemy:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.32987657, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qbmg"]
+_data = {
+&"RESET": SubResource("Animation_y21ji"),
+&"die_and_go_to_hell": SubResource("Animation_a6sfn"),
+&"look_around": SubResource("Animation_5qbmg"),
+&"walk": SubResource("Animation_0q11q")
+}
+
+[node name="Runner" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_52agx")
+
+[node name="SpriteEnemy" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0q11q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_8tegq")
+
+[node name="AnimYeti" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5qbmg")
+}

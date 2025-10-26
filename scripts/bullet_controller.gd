@@ -35,12 +35,17 @@ func upd8_graphics() -> void:
 	transform.y = -DIRECTION
 	transform.x = -DIRECTION.orthogonal()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	var move_vec := SPEED*DIRECTION
-	
+
+#Movimiento rectilineo uniforme bro....... bro... br
+func _process(delta: float) -> void:
+	var move_vec := (SPEED+delta)*DIRECTION
 	position += move_vec
 
 
 func _on_life_timer_timeout() -> void:
 	self.queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	area.queue_free()
+	queue_free()
