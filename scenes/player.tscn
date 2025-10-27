@@ -1,27 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://co7ejxoerse8a"]
+[gd_scene load_steps=8 format=3 uid="uid://co7ejxoerse8a"]
 
 [ext_resource type="Script" uid="uid://cfivyjn00lbp" path="res://scripts/player_controller.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cqn3gmgc5nuj8" path="res://textures/armando.png" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://3jwxt5nouwdn" path="res://scenes/player_wpn.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(54, 90)
+size = Vector2(62, 104)
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "walk"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.10511205, 0.12074214),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
+_data = {
+&"RESET": SubResource("Animation_dqkch"),
+&"walk": SubResource("Animation_qhqgy")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 
-[node name="Arm" parent="." instance=ExtResource("3_qhqgy")]
-position = Vector2(0, -6)
-rotation = -1.5707964
-BULLET_SPEED = 15.0
-
 [node name="CharSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 3)
-scale = Vector2(0.066, 0.066)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_qhqgy")
+
+[node name="Arm" parent="CharSprite" instance=ExtResource("3_qhqgy")]
+z_index = -1
+position = Vector2(0, -83.2061)
+rotation = -1.5707964
+scale = Vector2(12.5, 12.5)
+BARREL_POS = Vector2(0, 117)
+BULLET_SPEED = 15.0
+SHOT_RATE = 0.3
+
+[node name="WpnSprite" parent="CharSprite/Arm" index="0"]
+offset = Vector2(200, 0)
+
+[node name="Barrel" parent="CharSprite/Arm" index="1"]
+position = Vector2(-5.33662e-06, 117)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qlg0r")
+}
+
+[editable path="CharSprite/Arm"]

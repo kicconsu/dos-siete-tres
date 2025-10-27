@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://danhu2j53kaqi"]
+[gd_scene load_steps=4 format=3 uid="uid://danhu2j53kaqi"]
 
+[ext_resource type="Texture2D" uid="uid://esw353645mk6" path="res://textures/273 bg spawn.png" id="1_d1fgb"]
 [ext_resource type="PackedScene" uid="uid://co7ejxoerse8a" path="res://scenes/player.tscn" id="1_v6ssl"]
 [ext_resource type="PackedScene" uid="uid://durm68msfwsef" path="res://scenes/spawn_handler.tscn" id="2_epv74"]
 
 [node name="Woods" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_v6ssl")]
+[node name="273BgSpawn" type="Sprite2D" parent="."]
+position = Vector2(-1707, 245)
+texture = ExtResource("1_d1fgb")
 
-[node name="Arm" parent="Player" index="0"]
-SHOT_RATE = 0.5
+[node name="Player" parent="." instance=ExtResource("1_v6ssl")]
+position = Vector2(380, 446)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
@@ -19,8 +22,7 @@ monitorable = false
 INVERSE_SPAWN_RATE = 0.1
 
 [node name="TimerSpawn" parent="Player/SpawnHandler" index="0"]
-wait_time = 10.0
+wait_time = 20.0
+one_shot = false
 
-[editable path="Player"]
-[editable path="Player/Arm"]
 [editable path="Player/SpawnHandler"]

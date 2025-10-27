@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export
 var SPEED = 300.0
 
+var shmoovin := false
+
 func _process(_delta: float) -> void:
 	#Flipear el sprite de armando si el mouse está a la izq.
 	if global_position.x - get_global_mouse_position().x < 0:
@@ -30,6 +32,11 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = SPEED*left_right_dir
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	if up_down_dir or left_right_dir:
+		$AnimPlayer.play("walk")
+	else:
+		$AnimPlayer.play("RESET")
 	
 	velocity = velocity.limit_length(SPEED*1.3)
 	

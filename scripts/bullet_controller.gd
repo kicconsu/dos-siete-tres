@@ -47,5 +47,8 @@ func _on_life_timer_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	area.queue_free()
+	if area.is_in_group("Yetis"):
+		area.call_deferred("die_and_never_come_back")
+	else:
+		area.queue_free()
 	queue_free()

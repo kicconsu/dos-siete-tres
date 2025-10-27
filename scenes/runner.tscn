@@ -79,7 +79,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_a6sfn"]
 resource_name = "die_and_go_to_hell"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -87,10 +86,10 @@ tracks/0/path = NodePath("SpriteEnemy:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8333333, 1),
-"transitions": PackedFloat32Array(0.074325405, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.074325405, 0.21022406, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.02), Vector2(0.1, 0.02)]
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.02), Vector2(0.445, 0.001)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -111,10 +110,10 @@ tracks/2/path = NodePath("SpriteEnemy:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 1),
-"transitions": PackedFloat32Array(0.32987657, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(0.36602083, 3.2490115, 0.091505565, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0.34509805), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5qbmg"]
@@ -125,7 +124,7 @@ _data = {
 &"walk": SubResource("Animation_0q11q")
 }
 
-[node name="Runner" type="Area2D"]
+[node name="Runner" type="Area2D" groups=["Yetis"]]
 collision_layer = 2
 script = ExtResource("1_52agx")
 
@@ -142,3 +141,8 @@ shape = SubResource("RectangleShape2D_8tegq")
 libraries = {
 &"": SubResource("AnimationLibrary_5qbmg")
 }
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
