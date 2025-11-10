@@ -1,11 +1,68 @@
-[gd_scene load_steps=8 format=3 uid="uid://co7ejxoerse8a"]
+[gd_scene load_steps=11 format=3 uid="uid://co7ejxoerse8a"]
 
 [ext_resource type="Script" uid="uid://cfivyjn00lbp" path="res://scripts/player_controller.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cqn3gmgc5nuj8" path="res://textures/armando.png" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://3jwxt5nouwdn" path="res://scenes/player_wpn.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://dlemmwepjqu0d" path="res://sounds/walk-light.mp3" id="4_dqkch"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(62, 104)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+radius = 37.0
+height = 150.0
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.08, 0.08)]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "hurty"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(0.2588164, 0.2588164, 0.091505505),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 resource_name = "walk"
@@ -24,28 +81,55 @@ tracks/0/keys = {
 "values": [Vector2(0, 6), Vector2(0, -1)]
 }
 
-[sub_resource type="Animation" id="Animation_dqkch"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "deady"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharSprite:position")
+tracks/0/path = NodePath("CharSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.1333333, 1.3),
+"transitions": PackedFloat32Array(11.313708, 0.15389346, 1, 1),
 "update": 0,
-"values": [Vector2(0, 3)]
+"values": [Color(1, 0, 0, 1), Color(0.5, 0, 0, 1), Color(1, 0, 0, 0), Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1, 1.0333333, 1.3),
+"transitions": PackedFloat32Array(0.088388495, 1, 1, 6.72717, 6.72717),
+"update": 0,
+"values": [Vector2(0.08, 0.08), Vector2(0.08, -0.05), Vector2(0.08, -0.05), Vector2(0.435, -0.05), Vector2(0.435, -0.05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666666, 0.100000024, 0.13333334, 0.16666669, 0.19999999, 0.23333335, 0.26666665, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.50000006, 0.53333336, 0.56666666, 0.6, 0.6333334, 0.6666666, 0.7, 0.73333335, 0.76666665, 0.79999995, 0.8333333, 0.86666656, 0.9, 0.9333333, 0.9666666, 0.9999999),
+"transitions": PackedFloat32Array(0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018, 0.11662915, 0.15932018),
+"update": 0,
+"values": [Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3), Vector2(10, 3), Vector2(-10, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
 _data = {
 &"RESET": SubResource("Animation_dqkch"),
+&"deady": SubResource("Animation_tuyoq"),
+&"hurty": SubResource("Animation_qlg0r"),
 &"walk": SubResource("Animation_qhqgy")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 
@@ -72,11 +156,21 @@ position = Vector2(-5.33662e-06, 117)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_g2els")
+shape = SubResource("CapsuleShape2D_dqkch")
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_qlg0r")
 }
+
+[node name="Hurt" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qlg0r")
+}
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+autoplay = true
+parameters/looping = true
 
 [editable path="CharSprite/Arm"]

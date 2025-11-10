@@ -17,6 +17,7 @@ func _ready() -> void:
 	var animator:AnimationPlayer = ANIM_YETI
 	animator.speed_scale *= (SPEED+10)/20
 	animator.play("walk")
+	$Roar.play()
 
 
 func _process(_delta: float) -> void:
@@ -47,12 +48,16 @@ func _process(_delta: float) -> void:
 
 #Funciones para manejar la muerte del yeti
 func die_and_never_come_back():
+	$DeathSound.play()
 	monitorable = false
 	set_collision_mask_value(1, false)
 	dead = true
 	ANIM_YETI.play("die_and_go_to_hell")
-	print("tryna die")
 	$DeathTimer.start()
 func _on_death_timer_timeout() -> void:
-	print("finally dead")
 	queue_free() #Desaparecer de este planeta
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.call_deferred("get_hit")

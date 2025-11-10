@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1ueh40rtnadm" path="res://scripts/spawn_controller.gd" id="1_ypujr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6ssl"]
-radius = 2094.0957
+radius = 1374.7367
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ypujr"]
 radius = 3115.2698

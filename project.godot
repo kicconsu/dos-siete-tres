@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="DOS::SIETE::TRES"
+run/main_scene="uid://dj6pq2qiax82l"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://textures/icon.svg"
 
@@ -29,8 +30,13 @@ folder_colors={
 "res://autoloads/": "red",
 "res://scenes/": "green",
 "res://scripts/": "orange",
+"res://sounds/": "yellow",
 "res://textures/": "purple"
 }
+
+[global_group]
+
+Player=""
 
 [input]
 

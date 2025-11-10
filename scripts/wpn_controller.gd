@@ -95,6 +95,9 @@ func _process(_delta: float) -> void:
 				ANIM_WPN.play("shoot_flipped")
 			else:
 				ANIM_WPN.play("shoot")
+			
+			$AudioPlayer.play()
+			
 			can_shoot = false
 			SHOT_TIMER.start(SHOT_RATE*rate_mod)
 	

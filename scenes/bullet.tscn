@@ -18,6 +18,7 @@ scale = Vector2(0.031, 0.034)
 texture = ExtResource("2_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_mkf8s")
 
 [node name="LifeTimer" type="Timer" parent="."]

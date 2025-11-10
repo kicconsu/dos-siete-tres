@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://3jwxt5nouwdn"]
+[gd_scene load_steps=8 format=3 uid="uid://3jwxt5nouwdn"]
 
 [ext_resource type="Script" uid="uid://c8dlhe1jtkcii" path="res://scripts/wpn_controller.gd" id="1_ega3w"]
 [ext_resource type="Texture2D" uid="uid://c12tesuff0whg" path="res://textures/elbrazodearmando.png" id="2_3lfa7"]
+[ext_resource type="AudioStream" uid="uid://cu6210umeolyf" path="res://sounds/shot.mp3" id="3_mndtl"]
 
 [sub_resource type="Animation" id="Animation_3lfa7"]
 length = 0.001
@@ -110,5 +111,8 @@ position = Vector2(0, 104)
 libraries = {
 &"": SubResource("AnimationLibrary_mndtl")
 }
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mndtl")
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
